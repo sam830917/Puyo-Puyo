@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class KeyboardController : MonoBehaviour
 {
-    // Update is called once per frame
+    [SerializeField]
+    private LeftKey;
+
     void Update () {
         if (GameMaster.gameStatus==GameMaster.GameStatus.PuyoFalling)
         {
@@ -25,7 +27,7 @@ public class KeyboardController : MonoBehaviour
                 PuyoController.puyoDown(true);
             }
             //counterclockwise
-            if (Input.GetKeyUp(KeyCode.Z))
+            if (Input.GetKeyUp(KeyCode.Z) || Input.GetKeyUp(KeyCode.UpArrow))
             {
                 PuyoController.puyoCounterclockwise();
             }

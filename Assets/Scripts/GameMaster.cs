@@ -33,7 +33,6 @@ public class GameMaster : MonoBehaviour
 
     private bool falling = true;
 
-    // Use this for initialization
     void Start() {
         puyoGroupObj = puyoGroup;
         gameOverObj = gameOver;
@@ -42,7 +41,6 @@ public class GameMaster : MonoBehaviour
         mainPuyoShinyObj = mainPuyoShiny;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (gameStatus == GameStatus.GameInitializing)
