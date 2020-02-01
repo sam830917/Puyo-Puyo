@@ -101,13 +101,12 @@ public class GameMaster : MonoBehaviour
         if (PuyoController.reachBottom((int)controlMainPuyo.getPosition().x, (int)controlMainPuyo.getPosition().y) || 
             PuyoController.reachBottom((int)controlSubPuyo.getPosition().x, (int)controlSubPuyo.getPosition().y))
         {
-            if (PuyoController.isGameOver())
+            /*if (PuyoController.isGameOver())
             {
                 gameOverObj.SetActive(true);
                 gameStatus = GameStatus.GamePause;
-            }
-            else
-            {
+            }*/
+            
                 int mainX = (int)controlMainPuyo.getPosition().x;
                 int mainY = (int)controlMainPuyo.getPosition().y;
                 int subX = (int)controlSubPuyo.getPosition().x;
@@ -117,7 +116,6 @@ public class GameMaster : MonoBehaviour
 
                 gameStatus = GameStatus.PuyoArranging;
                 PuyoController.eliminateRow();
-            }
         }
         else
         {

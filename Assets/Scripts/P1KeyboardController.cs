@@ -8,17 +8,17 @@ public class P1KeyboardController : MonoBehaviour
         if (GameMaster.gameStatus==GameMaster.GameStatus.PuyoFalling)
         {
 
-            if (Input.GetKeyUp(KeyCode.LeftArrow) && (!PuyoController.havingObstacle(0, (int)GameMaster.controlMainPuyo.getPosition().x, (int)GameMaster.controlMainPuyo.getPosition().y) &&
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && (!PuyoController.havingObstacle(0, (int)GameMaster.controlMainPuyo.getPosition().x, (int)GameMaster.controlMainPuyo.getPosition().y) &&
                                                        !PuyoController.havingObstacle(0, (int)GameMaster.controlSubPuyo.getPosition().x, (int)GameMaster.controlSubPuyo.getPosition().y)))
             {
                 PuyoController.puyoLeft(true);
             }
-            if (Input.GetKeyUp(KeyCode.RightArrow) && (!PuyoController.havingObstacle(1, (int)GameMaster.controlMainPuyo.getPosition().x, (int)GameMaster.controlMainPuyo.getPosition().y) &&
+            if (Input.GetKeyDown(KeyCode.RightArrow) && (!PuyoController.havingObstacle(1, (int)GameMaster.controlMainPuyo.getPosition().x, (int)GameMaster.controlMainPuyo.getPosition().y) &&
                                                        !PuyoController.havingObstacle(1, (int)GameMaster.controlSubPuyo.getPosition().x, (int)GameMaster.controlSubPuyo.getPosition().y)))
             {
                 PuyoController.puyoRight(true);
             }
-            if (Input.GetKeyUp(KeyCode.DownArrow) && (!PuyoController.reachBottom((int)GameMaster.controlMainPuyo.getPosition().x, (int)GameMaster.controlMainPuyo.getPosition().y) &&
+            if (Input.GetKey(KeyCode.DownArrow) && (!PuyoController.reachBottom((int)GameMaster.controlMainPuyo.getPosition().x, (int)GameMaster.controlMainPuyo.getPosition().y) &&
                                                        !PuyoController.reachBottom((int)GameMaster.controlSubPuyo.getPosition().x, (int)GameMaster.controlSubPuyo.getPosition().y)))
             {
                 PuyoController.puyoDown(true);

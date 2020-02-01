@@ -465,15 +465,36 @@ public class PuyoController : MonoBehaviour
 
     public static void eliminateRow()
     {
+        int rowDeleteHeight = 0;
         if (isCameraLimit())
         {
-            for (int x = 0; x < 6; x++)
+            for (int y = 7; y < 12; y++)
             {
-                if (GameMaster.puyoArr[x, 0] != null)
+                for (int x = 0; x < 6; x++)
                 {
-                    Destroy(GameMaster.puyoArr[x, 0].getPuyoObj());
-                    GameMaster.puyoArr[x, 0] = null;
+                    if (GameMaster.puyoArr[x, y] != null)
+                    {
+                        rowDeleteHeight++;
+                        x = 0;
+                        break;
+                    }
                 }
+            }
+            for (int y = 0; y < rowDeleteHeight; y++)
+            {
+                for (int x = 0; x < 6; x++)
+                {
+                    if (GameMaster.puyoArr[x, y] != null)
+                    {
+                        Destroy(GameMaster.puyoArr[x, y].getPuyoObj());
+                        GameMaster.puyoArr[x, y] = null;
+                    }
+                }
+            }
+            if (isGameOver(rowDeleteHeight))
+            {
+                GameMaster.gameOverObj.SetActive(true);
+                GameMaster.gameStatus = GameMaster.GameStatus.GamePause;
             }
         }
     }
@@ -486,12 +507,13 @@ public class PuyoController : MonoBehaviour
         return false;
     }
 
-    public static bool isGameOver()
+    public static bool isGameOver(int rowDeleteHeight)
     {
-        if (GameMaster.controlMainPuyo.getPosition().y >= 12 || GameMaster.controlSubPuyo.getPosition().y >= 12)
+        if ((rowDeleteHeight >= GameMaster.controlMainPuyo.getPosition().y) || (rowDeleteHeight >= GameMaster.controlSubPuyo.getPosition().y))
             return true;
 
         return false;
+
     }
 
     public static void hold()
