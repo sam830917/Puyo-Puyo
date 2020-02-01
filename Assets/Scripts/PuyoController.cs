@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PuyoController : MonoBehaviour {
+public class PuyoController : MonoBehaviour
+{
     public static void puyoCreate()
     {
         GameMaster.controlMainPuyo = GameMaster.puyoInventory.Dequeue();
@@ -23,7 +24,8 @@ public class PuyoController : MonoBehaviour {
         ImageController.setShinyPuyo(GameMaster.controlMainPuyo.getColor());
     }
 
-    public static void puyoDown(bool moveShinyPuyo) {
+    public static void puyoDown(bool moveShinyPuyo)
+    {
         GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition = new Vector3
                     (GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.x, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.y - 32, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.z);
         GameMaster.controlSubPuyo.getPuyoObj().transform.localPosition = new Vector3
@@ -36,7 +38,8 @@ public class PuyoController : MonoBehaviour {
         }
     }
 
-    public static void puyoLeft(bool moveShinyPuyo) {
+    public static void puyoLeft(bool moveShinyPuyo)
+    {
         GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition = new Vector3
                     (GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.x - 32, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.y, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.z);
         GameMaster.controlSubPuyo.getPuyoObj().transform.localPosition = new Vector3
@@ -49,7 +52,8 @@ public class PuyoController : MonoBehaviour {
         }
     }
 
-    public static void puyoRight(bool moveShinyPuyo) {
+    public static void puyoRight(bool moveShinyPuyo)
+    {
         GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition = new Vector3
                     (GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.x + 32, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.y, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.z);
         GameMaster.controlSubPuyo.getPuyoObj().transform.localPosition = new Vector3
@@ -66,8 +70,9 @@ public class PuyoController : MonoBehaviour {
     {
         int x = (int)GameMaster.controlMainPuyo.getPosition().x;
         int y = (int)GameMaster.controlMainPuyo.getPosition().y;
-        if (GameMaster.subPuyoDirection==0) {
-            if ((x==0 || GameMaster.puyoArr[x - 1, y] == null) && (x == 5 || GameMaster.puyoArr[x + 1, y] == null))
+        if (GameMaster.subPuyoDirection == 0)
+        {
+            if ((x == 0 || GameMaster.puyoArr[x - 1, y] == null) && (x == 5 || GameMaster.puyoArr[x + 1, y] == null))
             {
                 if (x == 0 || GameMaster.puyoArr[x - 1, y] != null)
                 {
@@ -77,7 +82,7 @@ public class PuyoController : MonoBehaviour {
                 subPuyoMoveToLeft();
             }
         }
-        else if(GameMaster.subPuyoDirection == 1)
+        else if (GameMaster.subPuyoDirection == 1)
         {
             GameMaster.subPuyoDirection = 0;
             subPuyoMoveToTop();
@@ -192,20 +197,22 @@ public class PuyoController : MonoBehaviour {
         if (y >= 13)
             return false;
 
-        if (x <= 0 && type==0)
+        if (x <= 0 && type == 0)
             return true;
 
         if (x >= 5 && type == 1)
             return true;
 
-        if (type==0) {
+        if (type == 0)
+        {
             if (GameMaster.puyoArr[x - 1, y] != null)
             {
                 return true;
             }
         }
-        else {
-            if(GameMaster.puyoArr[x + 1, y] != null)
+        else
+        {
+            if (GameMaster.puyoArr[x + 1, y] != null)
             {
                 return true;
             }
@@ -213,7 +220,8 @@ public class PuyoController : MonoBehaviour {
         return false;
     }
 
-    public static void subPuyoMoveToTop() {
+    public static void subPuyoMoveToTop()
+    {
         GameMaster.controlSubPuyo.getPuyoObj().transform.localPosition = new Vector3
             (GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.x, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.y + 32, GameMaster.controlMainPuyo.getPuyoObj().transform.localPosition.z);
         GameMaster.controlSubPuyo.setPosition(new Vector2(GameMaster.controlMainPuyo.getPosition().x, GameMaster.controlMainPuyo.getPosition().y + 1));
@@ -453,6 +461,29 @@ public class PuyoController : MonoBehaviour {
             if (emptyRow)
                 break;
         }
+    }
+
+    public static void eliminateRow()
+    {
+        if (isCameraLimit())
+        {
+            for (int x = 0; x < 6; x++)
+            {
+                if (GameMaster.puyoArr[x, 0] != null)
+                {
+                    Destroy(GameMaster.puyoArr[x, 0].getPuyoObj());
+                    GameMaster.puyoArr[x, 0] = null;
+                }
+            }
+        }
+    }
+
+    public static bool isCameraLimit() //camera threshold for deletion
+    {
+        if (GameMaster.controlMainPuyo.getPosition().y >= 7 || GameMaster.controlSubPuyo.getPosition().y >= 7)
+            return true;
+
+        return false;
     }
 
     public static bool isGameOver()

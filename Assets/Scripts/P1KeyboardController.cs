@@ -38,6 +38,10 @@ public class P1KeyboardController : MonoBehaviour
             {
                 PuyoController.hold();
             }*/
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                PuyoController.eliminateRow();
+            }
         }
     }
 }
