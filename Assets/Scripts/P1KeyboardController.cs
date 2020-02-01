@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyboardController : MonoBehaviour
+public class P1KeyboardController : MonoBehaviour
 {
-    [SerializeField]
-    private LeftKey;
-
     void Update () {
         if (GameMaster.gameStatus==GameMaster.GameStatus.PuyoFalling)
         {
