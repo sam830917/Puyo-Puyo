@@ -27,20 +27,17 @@ public class P1KeyboardController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Z) || Input.GetKeyUp(KeyCode.UpArrow))
             {
                 PuyoController.puyoCounterclockwise();
+                FindObjectOfType<AudioManager>().Play("rotate");
             }
             //clockwise
             if (Input.GetKeyUp(KeyCode.X))
             {
                 PuyoController.puyoClockwise();
+                FindObjectOfType<AudioManager>().Play("rotate");
             }
-            //Hold
-            /*if (Input.GetKeyUp(KeyCode.Space))
-            {
-                PuyoController.hold();
-            }*/
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                PuyoController.eliminateRow();
+                //test key
             }
         }
     }
