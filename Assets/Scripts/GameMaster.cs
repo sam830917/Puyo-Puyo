@@ -70,6 +70,7 @@ public class GameMaster : MonoBehaviour
 
         if (gameStatus == GameStatus.PuyoArranging)
         {
+            FindObjectOfType<AudioManager>().Play("placePuyo");
             PuyoController.puyoArrange();
             gameStatus = GameStatus.PuyoLinking;
         }

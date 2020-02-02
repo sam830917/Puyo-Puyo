@@ -1083,7 +1083,7 @@ MonoBehaviour:
   - name: music
     clip: {fileID: 8300000, guid: 2dc0fcafd54b26c479ec9c82c7ca9315, type: 3}
     volume: 0.231
-    volumeVariance: 0.1
+    volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 1
@@ -1092,7 +1092,52 @@ MonoBehaviour:
   - name: rotate
     clip: {fileID: 8300000, guid: 20ca24488682be34e85c54b5b6384279, type: 3}
     volume: 0.231
-    volumeVariance: 0.1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: chain
+    clip: {fileID: 8300000, guid: d1741ef48d3d76c4c8718d138840f868, type: 3}
+    volume: 0.703
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: fall
+    clip: {fileID: 8300000, guid: 9e6ce97d4cc13ab4c8f04f91f7e2e12e, type: 3}
+    volume: 0.321
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: dead
+    clip: {fileID: 8300000, guid: 293c80236bd04b54d836cdd12cab455a, type: 3}
+    volume: 0.745
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: move
+    clip: {fileID: 8300000, guid: ce04424d22d35e545bfbfbf23d13de2e, type: 3}
+    volume: 0.254
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: placePuyo
+    clip: {fileID: 8300000, guid: bc90223bc46e56f499a051706e04b3fc, type: 3}
+    volume: 0.328
+    volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0

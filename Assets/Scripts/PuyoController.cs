@@ -5,13 +5,6 @@ using System.Linq;
 
 public class PuyoController : MonoBehaviour
 {
-    //public static AudioClip rotateSound;
-    //AudioSource audioSource;
-    private void Start()
-    {
-        //audioSource = GetComponent<AudioSource>();
-    }
-
     public static void puyoCreate()
     {
         GameMaster.controlMainPuyo = GameMaster.puyoInventory.Dequeue();
@@ -75,10 +68,6 @@ public class PuyoController : MonoBehaviour
 
     public static void puyoCounterclockwise()
     {
-        //AudioSource.PlayClipAtPoint(rotateSound, camera.main.transform.position);
-        //soundManager.playSound("rotateSound");
-        //audioSource.PlayOneShot(rotateSound);
-        //FindObjectOfType<AudioManager>().Play("rotateSound");
         int x = (int)GameMaster.controlMainPuyo.getPosition().x;
         int y = (int)GameMaster.controlMainPuyo.getPosition().y;
         if (GameMaster.subPuyoDirection == 0)
@@ -178,6 +167,7 @@ public class PuyoController : MonoBehaviour
                 {
                     if (GameMaster.puyoArr[x, y - 1] == null)
                     {
+                        FindObjectOfType<AudioManager>().Play("placePuyo");
                         GameObject tempPuyo = GameMaster.puyoArr[x, y].getPuyoObj();
                         tempPuyo.transform.localPosition = new Vector3(tempPuyo.transform.localPosition.x, tempPuyo.transform.localPosition.y - 32, tempPuyo.transform.localPosition.z);
                         GameMaster.puyoArr[x, y - 1] = GameMaster.puyoArr[x, y];
@@ -464,6 +454,7 @@ public class PuyoController : MonoBehaviour
                 {
                     if (ImageController.ELIMINATE_FACE == GameMaster.puyoArr[x, y].getLinkStatus())
                     {
+                        FindObjectOfType<AudioManager>().Play("chain");
                         Destroy(GameMaster.puyoArr[x, y].getPuyoObj());
                         GameMaster.puyoArr[x, y] = null;
                     }
@@ -498,6 +489,7 @@ public class PuyoController : MonoBehaviour
                 {
                     if (GameMaster.puyoArr[x, y] != null)
                     {
+                        FindObjectOfType<AudioManager>().Play("fall");
                         Destroy(GameMaster.puyoArr[x, y].getPuyoObj());
                         GameMaster.puyoArr[x, y] = null;
                     }
@@ -505,6 +497,7 @@ public class PuyoController : MonoBehaviour
             }
             if (isGameOver(rowDeleteHeight))
             {
+                FindObjectOfType<AudioManager>().Play("dead");
                 GameMaster.gameOverObj.SetActive(true);
                 GameMaster.gameStatus = GameMaster.GameStatus.GamePause;
             }
