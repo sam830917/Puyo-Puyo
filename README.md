@@ -1,4 +1,4 @@
-Light-Up
+Puyo-Puyo
 =============
 
 ## Description
